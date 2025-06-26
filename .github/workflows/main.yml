@@ -7,11 +7,14 @@ on:
   pull_request:
     branches:
       - main
+  schedule:
+    - cron: '0 */6 * * *'  # Automatically run every 6 hours (UTC)
 
 jobs:
   build:
 
     runs-on: ubuntu-latest
+    timeout-minutes: 360  # Max allowed, ensures job can run up to 6 hours
 
     strategy:
       matrix:
